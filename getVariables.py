@@ -3,7 +3,8 @@ from xmlExtract import extractDataFromXML
 from scipy.io import savemat
 import sys
 
-#Gets the xml from ExpCtr and saves them as .mat
+#Gets the xml from ExpCtr and saves the variables as .mat
+#Takes a file full path as argument that is used to save the .mat file at.
 def getVariables(varFilePath):
 
     #Port and Ip for server that host expRunner
@@ -11,11 +12,10 @@ def getVariables(varFilePath):
     ip = '134.100.104.14'
     
     #Get the xml file from the exprunner as one long string using getXml()
-    #with the ip and the port passed from the multiscope config file
     fileString = getXml(port, ip)
     #Extract data from the control-file.
     dataList = extractDataFromXML(fileString)
-    #begin = time.time()    #in der Liste kommen erst Variablen, dann Timing, dann Events
+    #dataList[0] contains variables, dataList[1] timing and dataList[2] events. 
     vars = dataList[0]
     #save the data into a .mat-File.
     savemat(varFilePath, vars)

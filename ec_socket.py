@@ -24,7 +24,7 @@ def getXml(port, ip):
     #Construct the socket object
     s = socket.socket()
 
-    #Try to connect the socket using ip address and port passed to the function
+    #Try to connect with the socket using ip address and port passed to the function
     #If it fails throw an exception
     try:
         s.connect((ip, port))
@@ -64,13 +64,11 @@ def getXml(port, ip):
                 time.sleep(0.0000001)
         except:
             pass
-    #endReq = time.time() 
 
     #Close the socket when the data is complete
     s.close
 
-    #duration = beginReq - endReq
-    #print('Data revceiving:', duration)
+
     
     #Make a list of strings, where each string correspongs to a component of
     #the totaldata array.
